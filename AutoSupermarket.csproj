@@ -115,6 +115,7 @@
     <Compile Include="Assets\Mega-Fiers\Scripts\MegaScatter\MegaScatterObjectAlong.cs" />
     <Compile Include="Assets\Mega-Fiers\Scripts\MegaScatter\MegaScatterObjectTexture.cs" />
     <Compile Include="Assets\Scripts\AutoFiller.cs" />
+    <Compile Include="Assets\Scripts\AutoMegaFiller.cs" />
     <Compile Include="Assets\UPattern\Code\GridShuffler.cs" />
     <Compile Include="Assets\UPattern\Code\GridShufflerGizmo.cs" />
     <Compile Include="Assets\UPattern\Code\GridShufflerInScene.cs" />
@@ -139,6 +140,7 @@
     <None Include="Assets\Mega-Fiers\MegaScatter Test\Shaders\MegaScatterVCNoWave Cull.shader" />
     <None Include="Assets\Mega-Fiers\MegaScatter Test\Shaders\MegaScatterVCNoWave.shader" />
     <None Include="Assets\Mega-Fiers\Scripts\MegaScatter\ReadMe.txt" />
+    <None Include="Assets\Resources\RadiusFile\RadiusInfos.txt" />
     <None Include="Assets\UPattern\uPattern_Patchnotes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

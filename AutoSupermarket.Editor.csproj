@@ -172,6 +172,7 @@
     <None Include="Assets\Mega-Fiers\MegaScatter Test\Shaders\MegaScatterVCNoWave Cull.shader" />
     <None Include="Assets\Mega-Fiers\MegaScatter Test\Shaders\MegaScatterVCNoWave.shader" />
     <None Include="Assets\Mega-Fiers\Scripts\MegaScatter\ReadMe.txt" />
+    <None Include="Assets\Resources\RadiusFile\RadiusInfos.txt" />
     <None Include="Assets\UPattern\uPattern_Patchnotes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
