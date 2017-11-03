@@ -81,7 +81,65 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Mega-Fiers\MegaScatter Test\Scripts\MegaScatterOrbit.cs" />
+    <Compile Include="Assets\Mega-Fiers\MegaScatter Test\Scripts\WindControl.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaBox3.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaControllers\MegaBezFloatKeyControl.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaControllers\MegaBezVector3KeyControl.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaControllers\MegaControl.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaMatrix.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaPerlin.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaShape\MegaKML.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaShape\MegaPathFollow.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaShape\MegaShape.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaShape\MegaShapeArc.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaShape\MegaShapeCircle.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaShape\MegaShapeEllipse.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaShape\MegaShapeHelix.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaShape\MegaShapeLightMapWindow.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaShape\MegaShapeLine.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaShape\MegaShapeNGon.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaShape\MegaShapeOSM.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaShape\MegaShapeRectangle.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaShape\MegaShapeStar.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaShape\MegaShapeSVG.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaShape\MegaShapeSXL.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaUtils.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaFiers\MegaXMLReader.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaScatter\MegaScatter.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaScatter\MegaScatterLayer.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaScatter\MegaScatterMesh.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaScatter\MegaScatterMeshAlong.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaScatter\MegaScatterMeshTexture.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaScatter\MegaScatterObject.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaScatter\MegaScatterObjectAlong.cs" />
+    <Compile Include="Assets\Mega-Fiers\Scripts\MegaScatter\MegaScatterObjectTexture.cs" />
     <Compile Include="Assets\Scripts\AutoFiller.cs" />
+    <Compile Include="Assets\UPattern\Code\GridShuffler.cs" />
+    <Compile Include="Assets\UPattern\Code\GridShufflerGizmo.cs" />
+    <Compile Include="Assets\UPattern\Code\GridShufflerInScene.cs" />
+    <Compile Include="Assets\UPattern\Code\GridShufflerInSceneEditor.cs" />
+    <Compile Include="Assets\UPattern\Code\MoveAgent.cs" />
+    <Compile Include="Assets\UPattern\Code\MoveAgentGizmo.cs" />
+    <Compile Include="Assets\UPattern\Code\ReadOnlyAttribute.cs" />
+    <Compile Include="Assets\UPattern\Code\ReadOnlyDrawer.cs" />
+    <Compile Include="Assets\UPattern\Code\RenderCamera.cs" />
+    <Compile Include="Assets\UPattern\Code\SimpleMaze.cs" />
+    <Compile Include="Assets\UPattern\Code\SimpleMazeGizmo.cs" />
+    <Compile Include="Assets\UPattern\Code\SimpleMazeInScene.cs" />
+    <Compile Include="Assets\UPattern\Code\TextureImporterUnityPattern.cs" />
+    <Compile Include="Assets\UPattern\Code\TubeAgent.cs" />
+    <Compile Include="Assets\UPattern\Code\TubeAgentGizmo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Mega-Fiers\MegaScatter Test\Shaders\MegaScatter.shader" />
+    <None Include="Assets\Mega-Fiers\MegaScatter Test\Shaders\MegaScatterNoWave.shader" />
+    <None Include="Assets\Mega-Fiers\MegaScatter Test\Shaders\MegaScatterVC Alpha.shader" />
+    <None Include="Assets\Mega-Fiers\MegaScatter Test\Shaders\MegaScatterVC.shader" />
+    <None Include="Assets\Mega-Fiers\MegaScatter Test\Shaders\MegaScatterVCNoWave Cull.shader" />
+    <None Include="Assets\Mega-Fiers\MegaScatter Test\Shaders\MegaScatterVCNoWave.shader" />
+    <None Include="Assets\Mega-Fiers\Scripts\MegaScatter\ReadMe.txt" />
+    <None Include="Assets\UPattern\uPattern_Patchnotes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

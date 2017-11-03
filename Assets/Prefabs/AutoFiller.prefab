@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1247115346118680}
+  m_IsPrefabParent: 1
+--- !u!1 &1247115346118680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4786015542070636}
+  - component: {fileID: 114185535155116000}
+  m_Layer: 0
+  m_Name: AutoFiller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4786015542070636
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247115346118680}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5081787, y: -0.48858643, z: -0.39160156}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114185535155116000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247115346118680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62c1d3d92b53b74c9f2cee4e10276e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bin1ButtomLeft: {fileID: 0}
+  bin2ButtomLeft: {fileID: 0}
+  bin3ButtomLeft: {fileID: 0}
+  bin4ButtomLeft: {fileID: 0}
+  bin5ButtomLeft: {fileID: 0}
+  maxstuffineachBin: 100
+  startZ: -0.432
+  maxZ: -0.012
+  Zsteps: 0.1
+  Xsteps: 0.1
+  LargeBox: {fileID: 1627370150894378, guid: 39b77e68e1c1e9a4c82f9ac28f5534c4, type: 2}
+  SmallBox: {fileID: 1671910993220382, guid: bfda6d392ce7c2b4c85455816b569769, type: 2}
+  Coke: {fileID: 1025913007174824, guid: 71110f5a2da9ba24c9f149a4f987035b, type: 2}
