@@ -155,14 +155,6 @@
     <Compile Include="Assets\Mega-Fiers\Editor\MegaScatter\MegaScatterObjectAlongEditor.cs" />
     <Compile Include="Assets\Mega-Fiers\Editor\MegaScatter\MegaScatterObjectEditor.cs" />
     <Compile Include="Assets\Mega-Fiers\Editor\MegaScatter\MegaScatterObjectTextureEditor.cs" />
-    <Compile Include="Assets\UPattern\Code\Editor\GridShufflerEditor.cs" />
-    <Compile Include="Assets\UPattern\Code\Editor\MoveAgentEditor.cs" />
-    <Compile Include="Assets\UPattern\Code\Editor\RenderCameraEditor.cs" />
-    <Compile Include="Assets\UPattern\Code\Editor\SimpleMazeEditor.cs" />
-    <Compile Include="Assets\UPattern\Code\Editor\SimpleMazeInSceneEditor.cs" />
-    <Compile Include="Assets\UPattern\Code\Editor\TubeAgentEditor.cs" />
-    <Compile Include="Assets\UPattern\Code\Editor\uPatternCustomMenu.cs" />
-    <Compile Include="Assets\UPattern\Code\Editor\uPatternPopupMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Mega-Fiers\MegaScatter Test\Shaders\MegaScatter.shader" />
@@ -173,7 +165,6 @@
     <None Include="Assets\Mega-Fiers\MegaScatter Test\Shaders\MegaScatterVCNoWave.shader" />
     <None Include="Assets\Mega-Fiers\Scripts\MegaScatter\ReadMe.txt" />
     <None Include="Assets\Resources\RadiusFile\RadiusInfos.txt" />
-    <None Include="Assets\UPattern\uPattern_Patchnotes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

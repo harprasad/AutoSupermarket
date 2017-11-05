@@ -82,6 +82,7 @@ public class AutoFiller : MonoBehaviour {
         DestroyAll();
         PlaceStuff();
     }
+
     void DestroyAll()
     {
         GameObject[] stuffs = GameObject.FindGameObjectsWithTag("Stuff");

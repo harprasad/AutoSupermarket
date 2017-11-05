@@ -6,12 +6,13 @@ using System.IO;
 public class AutoMegaFiller : MonoBehaviour {
     MegaScatterObject MsObj;
     
-    //When we will have 1000 objects we will increase the following number from 3 to 1001
-    int MaxAvailableObjs = 3;
+    //When we will have 1000 objects we will increase the following number from 4 to 1001
+    int MaxAvailableObjs = 4;
     string RadiusFilepath = "Assets/Resources/RadiusFile/RadiusInfos.txt";
     
     // Use this for initialization
     void Start () {
+        ColorCodes.FillColorCodes();
         MsObj = gameObject.GetComponent<MegaScatterObject>();
         AddMesh(Random.Range(0,4));
         StartCoroutine(KeepRefreshing());
@@ -24,6 +25,7 @@ public class AutoMegaFiller : MonoBehaviour {
 
     void AddMesh(int seed)
     {
+        Random.InitState(System.DateTime.Now.Millisecond);
         int MaxObjectTypesPerBin = Random.Range(2, 3);
         for (int i = 0; i < MaxObjectTypesPerBin; i++)
         {
@@ -40,11 +42,13 @@ public class AutoMegaFiller : MonoBehaviour {
             scatterLayer.snap = new Vector3(radius, 0, 0);
             if (radius <= 0.08f) {
                 scatterLayer.rotHigh = new Vector3(0, 270, 0);
-                scatterLayer.weight = 50;
+               // scatterLayer.weight = 10;
+                scatterLayer.vertexnoise = false;
+                scatterLayer.snap = new Vector3(radius * 2, 0, 0);
             }
+            scatterLayer.seed = seed;
             MsObj.layers.Add(scatterLayer);
         }
-        MsObj.seed = seed;
         MsObj.update = true;
     }
 
@@ -68,16 +72,46 @@ public class AutoMegaFiller : MonoBehaviour {
 
     IEnumerator KeepRefreshing()
     {
+        int counter = 0;
         while (true)
         {
             yield return new WaitForSeconds(2f);
             ClearAllObjects();
-            AddMesh(Random.Range(0, 4));
+            AddMesh(Random.Range(0, 10));
+            yield return new WaitForSeconds(0.1f);
+            GameObject[] Stuffs = GameObject.FindGameObjectsWithTag("Stuff");
+            TakeScreenShots(counter, Stuffs, false);
+            yield return new WaitForSeconds(0.1f);
+            TakeScreenShots(counter, Stuffs, true);
+            counter++;
         }
     }
 
     void ClearAllObjects()
     {
         MsObj.RemoveObjects();
+        MsObj.layers.RemoveRange(0, MsObj.layers.Count);
+    }
+
+    void TakeScreenShots(int counter,GameObject[] Stuffs,bool Labled)
+    {
+        if (!Labled)
+        {
+            ScreenCapture.CaptureScreenshot("Screenshot" + counter.ToString() + ".png");
+        }
+        else
+        {
+            foreach (GameObject stuff in Stuffs)
+            {
+                //Since in these demo 
+                Renderer[] renderers = stuff.GetComponentsInChildren<Renderer>();
+                foreach (Renderer rend in renderers)
+                {
+                    rend.material.mainTexture = null;
+                    rend.material.color = ColorCodes.Colordictionary[stuff.name];
+                }
+                ScreenCapture.CaptureScreenshot("Screenshot_Labled" + counter.ToString() + ".png");
+            }
+        }
     }
 }
