@@ -97,20 +97,20 @@ public class AutoMegaFiller : MonoBehaviour {
     {
         if (!Labled)
         {
-            ScreenCapture.CaptureScreenshot("Screenshot" + counter.ToString() + ".png");
+            ScreenCapture.CaptureScreenshot("ScreenShots/" + "Screenshot" + counter.ToString() + ".png");
         }
         else
         {
             foreach (GameObject stuff in Stuffs)
             {
-                //Since in these demo 
+                //The following lines will change when we will use proper models this is only to accomodate downloaded models(they have multiple meshes)
                 Renderer[] renderers = stuff.GetComponentsInChildren<Renderer>();
                 foreach (Renderer rend in renderers)
                 {
                     rend.material.mainTexture = null;
                     rend.material.color = ColorCodes.Colordictionary[stuff.name];
                 }
-                ScreenCapture.CaptureScreenshot("Screenshot_Labled" + counter.ToString() + ".png");
+                ScreenCapture.CaptureScreenshot("ScreenShots/" + "Screenshot_Labled" + counter.ToString() + ".png");
             }
         }
     }
