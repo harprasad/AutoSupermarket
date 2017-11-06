@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4977517847029700}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Coke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4178339415211734}
   - component: {fileID: 33967628296559686}
   - component: {fileID: 23234128642148920}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lata_tapa_Cilindro1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4965878033157196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 1
   m_TagString: Stuff
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 4428278056629758}
   - component: {fileID: 33899648102947346}
   - component: {fileID: 23083419105795336}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lata_boton_Cilindro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 4803242408390644}
   - component: {fileID: 33517029299261256}
   - component: {fileID: 23402624022433760}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lata_chapita
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 4426310391783196}
   - component: {fileID: 33242564052390450}
   - component: {fileID: 23926100526175042}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lata_cuerpo_Cilindro2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

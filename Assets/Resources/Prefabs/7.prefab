@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33802079648160310}
   - component: {fileID: 23284620304907524}
   - component: {fileID: 95554074831227192}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: campbellsoup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4646604900403658}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}

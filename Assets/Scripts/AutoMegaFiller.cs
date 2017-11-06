@@ -82,14 +82,28 @@ public class AutoMegaFiller : MonoBehaviour {
             GameObject[] Stuffs = GameObject.FindGameObjectsWithTag("Stuff");
             TakeScreenShots(counter, Stuffs, false,false);
             yield return new WaitForSeconds(0.1f);
+            SetCullingMask(true);
+            yield return new WaitForSeconds(0.1f);
             TakeScreenShots(counter, Stuffs, true,true);
             yield return new WaitForSeconds(0.1f);
             TakeScreenShots(counter, Stuffs, true,false);
-
+            yield return new WaitForSeconds(0.1f);
+            SetCullingMask(false);
             counter++;
         }
     }
 
+    void SetCullingMask(bool allblack)
+    {
+        if (!allblack)
+        {
+            Camera.main.cullingMask = (1 << LayerMask.NameToLayer("Default") | 1 << LayerMask.NameToLayer("Objects"));
+        }
+        else
+        {
+            Camera.main.cullingMask = (1 << LayerMask.NameToLayer("Objects"));
+        }
+    }
     void ClearAllObjects()
     {
         MsObj.RemoveObjects();
@@ -128,7 +142,6 @@ public class AutoMegaFiller : MonoBehaviour {
                     else
                     {
                         ScreenCapture.CaptureScreenshot("ScreenShots/" + "Screenshot_Instance_Labled" + counter.ToString() + ".png");
-
                     }
                 }
                 else {

@@ -135,6 +135,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Editor\AutoPrefab.cs" />
     <Compile Include="Assets\Mega-Fiers\Editor\MegaFiers\MegaParseEditor.cs" />
     <Compile Include="Assets\Mega-Fiers\Editor\MegaFiers\MegaShape\MegaShapeArcEditor.cs" />
     <Compile Include="Assets\Mega-Fiers\Editor\MegaFiers\MegaShape\MegaShapeCircleEditor.cs" />
