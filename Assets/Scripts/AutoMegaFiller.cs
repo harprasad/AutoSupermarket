@@ -6,8 +6,8 @@ using System.IO;
 public class AutoMegaFiller : MonoBehaviour {
     MegaScatterObject MsObj;
     
-    //When we will have 1000 objects we will increase the following number from 4 to 1001
-    int MaxAvailableObjs = 4;
+    //When we will have 1000 objects we will increase the following number from  to 1001
+    int MaxAvailableObjs = 9;
     string RadiusFilepath = "Assets/Resources/RadiusFile/RadiusInfos.txt";
     
     // Use this for initialization
@@ -39,9 +39,9 @@ public class AutoMegaFiller : MonoBehaviour {
             scatterLayer.radius = radius;
             scatterLayer.noOverlap = true;
             scatterLayer.LayerName = randomobjindex.ToString();
-            scatterLayer.snap = new Vector3(radius, 0, 0);
+            scatterLayer.snap = new Vector3(radius*2, 0, 0);
             if (radius <= 0.08f) {
-                scatterLayer.rotHigh = new Vector3(0, 270, 0);
+               // scatterLayer.rotHigh = new Vector3(0, 270, 0);
                // scatterLayer.weight = 10;
                 scatterLayer.vertexnoise = false;
                 scatterLayer.snap = new Vector3(radius * 2, 0, 0);
@@ -75,14 +75,17 @@ public class AutoMegaFiller : MonoBehaviour {
         int counter = 0;
         while (true)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.5f);
             ClearAllObjects();
             AddMesh(Random.Range(0, 10));
             yield return new WaitForSeconds(0.1f);
             GameObject[] Stuffs = GameObject.FindGameObjectsWithTag("Stuff");
-            TakeScreenShots(counter, Stuffs, false);
+            TakeScreenShots(counter, Stuffs, false,false);
             yield return new WaitForSeconds(0.1f);
-            TakeScreenShots(counter, Stuffs, true);
+            TakeScreenShots(counter, Stuffs, true,true);
+            yield return new WaitForSeconds(0.1f);
+            TakeScreenShots(counter, Stuffs, true,false);
+
             counter++;
         }
     }
@@ -93,7 +96,7 @@ public class AutoMegaFiller : MonoBehaviour {
         MsObj.layers.RemoveRange(0, MsObj.layers.Count);
     }
 
-    void TakeScreenShots(int counter,GameObject[] Stuffs,bool Labled)
+    void TakeScreenShots(int counter,GameObject[] Stuffs,bool Labled,bool classSpecific)
     {
         if (!Labled)
         {
@@ -103,15 +106,56 @@ public class AutoMegaFiller : MonoBehaviour {
         {
             foreach (GameObject stuff in Stuffs)
             {
-                //The following lines will change when we will use proper models this is only to accomodate downloaded models(they have multiple meshes)
-                Renderer[] renderers = stuff.GetComponentsInChildren<Renderer>();
-                foreach (Renderer rend in renderers)
+                if (stuff.GetComponent<Renderer>() == null)
                 {
-                    rend.material.mainTexture = null;
-                    rend.material.color = ColorCodes.Colordictionary[stuff.name];
+                    //This is for the downloaded models which contains multiple meshes in children
+                    Renderer[] renderers = stuff.GetComponentsInChildren<Renderer>();
+                    foreach (Renderer rend in renderers)
+                    {
+                        rend.material.mainTexture = null;
+                        if (classSpecific)
+                        {
+                            rend.material.color = ColorCodes.Colordictionary[stuff.name];
+                        }
+                        else
+                        {
+                            rend.material.color = Random.ColorHSV();
+                        }
+                    }if (classSpecific)
+                    {
+                        ScreenCapture.CaptureScreenshot("ScreenShots/" + "Screenshot_Labled" + counter.ToString() + ".png");
+                    }
+                    else
+                    {
+                        ScreenCapture.CaptureScreenshot("ScreenShots/" + "Screenshot_Instance_Labled" + counter.ToString() + ".png");
+
+                    }
                 }
-                ScreenCapture.CaptureScreenshot("ScreenShots/" + "Screenshot_Labled" + counter.ToString() + ".png");
+                else {
+                    Renderer renderer = stuff.GetComponent<Renderer>();
+                    renderer.material.mainTexture = null;
+                    if (classSpecific)
+                    {
+                        renderer.material.color = ColorCodes.Colordictionary[stuff.name];
+                    }
+                    else
+                    {
+                        renderer.material.color = Random.ColorHSV();
+                    }
+                    if (classSpecific)
+                    {
+                        ScreenCapture.CaptureScreenshot("ScreenShots/" + "Screenshot_Labled" + counter.ToString() + ".png");
+                    }
+                    else
+                    {
+                        ScreenCapture.CaptureScreenshot("ScreenShots/" + "Screenshot_Instance_Labled" + counter.ToString() + ".png");
+
+                    }
+
+                }
             }
         }
     }
+
+
 }
