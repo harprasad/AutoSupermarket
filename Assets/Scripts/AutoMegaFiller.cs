@@ -7,7 +7,7 @@ public class AutoMegaFiller : MonoBehaviour {
     MegaScatterObject MsObj;
     
     //When we will have 1000 objects we will increase the following number from  to 1001
-    int MaxAvailableObjs = 8;
+    int MaxAvailableObjs = 18;  //actual +1
     string RadiusFilepath = "Assets/Resources/RadiusFile/RadiusInfos.txt";
     
     // Use this for initialization
@@ -118,6 +118,7 @@ public class AutoMegaFiller : MonoBehaviour {
         }
         else
         {
+            byte colorindex = 10;
             foreach (GameObject stuff in Stuffs)
             {
                 if (stuff.GetComponent<Renderer>() == null)
@@ -129,32 +130,16 @@ public class AutoMegaFiller : MonoBehaviour {
                         rend.material.mainTexture = null;
                         if (classSpecific)
                         {
+                            rend.material.shader = Shader.Find("Unlit/Color");
                             rend.material.color = ColorCodes.Colordictionary[stuff.name];
                         }
                         else
                         {
-                            rend.material.color = Random.ColorHSV();
+                            rend.material.shader = Shader.Find("Unlit/Color");
+                            rend.material.color = new Color32(colorindex, colorindex, colorindex,255);
                         }
-                    }if (classSpecific)
-                    {
-                        ScreenCapture.CaptureScreenshot("ScreenShots/" + "Screenshot_Labled" + counter.ToString() + ".png");
                     }
-                    else
-                    {
-                        ScreenCapture.CaptureScreenshot("ScreenShots/" + "Screenshot_Instance_Labled" + counter.ToString() + ".png");
-                    }
-                }
-                else {
-                    Renderer renderer = stuff.GetComponent<Renderer>();
-                    renderer.material.mainTexture = null;
-                    if (classSpecific)
-                    {
-                        renderer.material.color = ColorCodes.Colordictionary[stuff.name];
-                    }
-                    else
-                    {
-                        renderer.material.color = Random.ColorHSV();
-                    }
+                    colorindex++;
                     if (classSpecific)
                     {
                         ScreenCapture.CaptureScreenshot("ScreenShots/" + "Screenshot_Labled" + counter.ToString() + ".png");
@@ -163,7 +148,6 @@ public class AutoMegaFiller : MonoBehaviour {
                     {
                         ScreenCapture.CaptureScreenshot("ScreenShots/" + "Screenshot_Instance_Labled" + counter.ToString() + ".png");
                     }
-
                 }
             }
         }
