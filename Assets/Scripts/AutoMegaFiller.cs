@@ -7,7 +7,7 @@ public class AutoMegaFiller : MonoBehaviour {
     MegaScatterObject MsObj;
     
     //When we will have 1000 objects we will increase the following number from  to 1001
-    int MaxAvailableObjs = 9;
+    int MaxAvailableObjs = 8;
     string RadiusFilepath = "Assets/Resources/RadiusFile/RadiusInfos.txt";
     
     // Use this for initialization
@@ -149,7 +149,6 @@ public class AutoMegaFiller : MonoBehaviour {
                     else
                     {
                         ScreenCapture.CaptureScreenshot("ScreenShots/" + "Screenshot_Instance_Labled" + counter.ToString() + ".png");
-
                     }
 
                 }

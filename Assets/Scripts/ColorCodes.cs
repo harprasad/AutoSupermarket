@@ -15,6 +15,10 @@ public class ColorCodes : MonoBehaviour {
             for(int i = 1; i < maxObjectAvailable; i++)
             {
                 Color randomcolor = Random.ColorHSV();
+                //if black swap it to blue
+                if (randomcolor.r == 0 && randomcolor.g == 0 && randomcolor.b == 0) {
+                    randomcolor.b = 100;//make it blue
+                }
                 Colordictionary.Add(i.ToString() + " Scatter", randomcolor);
             }
         }
