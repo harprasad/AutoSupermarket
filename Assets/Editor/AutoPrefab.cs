@@ -15,7 +15,7 @@ public class AutoPrefab : MonoBehaviour {
             parent.name = t.name;
             parent.transform.position = t.position;
             t.parent = parent.transform;
-
+            parent.tag = "Stuff";
             Object prefab = PrefabUtility.CreateEmptyPrefab("Assets/GeneratedPrefabs/" + t.gameObject.name + ".prefab");
             PrefabUtility.ReplacePrefab(parent, prefab, ReplacePrefabOptions.ConnectToPrefab);
         }
