@@ -7,7 +7,7 @@ public class AutoMegaFiller : MonoBehaviour {
     MegaScatterObject MsObj;
     
     //When we will have 1000 objects we will increase the following number from  to 1001
-    int MaxAvailableObjs = 18;  //actual +1
+    int MaxAvailableObjs = 21;  //actual +1
     string RadiusFilepath = "Assets/Resources/RadiusFile/RadiusInfos.txt";
     
     // Use this for initialization
@@ -32,7 +32,7 @@ public class AutoMegaFiller : MonoBehaviour {
             MegaScatterLayer scatterLayer = new MegaScatterLayer();
             if(i == 0) { scatterLayer.weight = 40; Debug.Log("Weight Set to 40"); }
             //Choose a random object
-            int randomobjindex = Random.Range(1, MaxAvailableObjs);
+            int randomobjindex = Random.Range(19, MaxAvailableObjs);
             //the prefabs path given below is with respect to the Resources foler not assets folder
             string path = "Prefabs/" + randomobjindex.ToString();
             scatterLayer.obj = Resources.Load(path, typeof(GameObject)) as GameObject;
@@ -115,7 +115,7 @@ public class AutoMegaFiller : MonoBehaviour {
     {
         if (!Labled)
         {
-            ScreenCapture.CaptureScreenshot("ScreenShots/JPEGImages/" + "Screenshot" + counter.ToString() + ".png");
+            ScreenCapture.CaptureScreenshot("ScreenShots/JPEGImages/" + "Screenshot" + counter.ToString() + ".png", 3);
         }
         else
         {
@@ -143,11 +143,11 @@ public class AutoMegaFiller : MonoBehaviour {
                     colorindex++;
                     if (classSpecific)
                     {
-                        ScreenCapture.CaptureScreenshot("ScreenShots/cls/" + "Screenshot_Labled" + counter.ToString() + ".png");
+                        ScreenCapture.CaptureScreenshot("ScreenShots/cls/" + "Screenshot" + counter.ToString() + ".png", 3);
                     }
                     else
                     {
-                        ScreenCapture.CaptureScreenshot("ScreenShots/inst/" + "Screenshot_Instance_Labled" + counter.ToString() + ".png");
+                        ScreenCapture.CaptureScreenshot("ScreenShots/inst/" + "Screenshot" + counter.ToString() + ".png", 3);
                     }
 
                 }
