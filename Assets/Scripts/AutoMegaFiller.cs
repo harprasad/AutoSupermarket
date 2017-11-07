@@ -26,10 +26,11 @@ public class AutoMegaFiller : MonoBehaviour {
     void AddMesh(int seed)
     {
         Random.InitState(System.DateTime.Now.Millisecond);
-        int MaxObjectTypesPerBin = Random.Range(2, 3);
+        int MaxObjectTypesPerBin = 2;
         for (int i = 0; i < MaxObjectTypesPerBin; i++)
         {
             MegaScatterLayer scatterLayer = new MegaScatterLayer();
+            if(i == 0) { scatterLayer.weight = 40; Debug.Log("Weight Set to 40"); }
             //Choose a random object
             int randomobjindex = Random.Range(1, MaxAvailableObjs);
             //the prefabs path given below is with respect to the Resources foler not assets folder
@@ -114,7 +115,7 @@ public class AutoMegaFiller : MonoBehaviour {
     {
         if (!Labled)
         {
-            ScreenCapture.CaptureScreenshot("ScreenShots/" + "Screenshot" + counter.ToString() + ".png");
+            ScreenCapture.CaptureScreenshot("ScreenShots/JPEGImages/" + "Screenshot" + counter.ToString() + ".png");
         }
         else
         {
@@ -142,16 +143,17 @@ public class AutoMegaFiller : MonoBehaviour {
                     colorindex++;
                     if (classSpecific)
                     {
-                        ScreenCapture.CaptureScreenshot("ScreenShots/" + "Screenshot_Labled" + counter.ToString() + ".png");
+                        ScreenCapture.CaptureScreenshot("ScreenShots/cls/" + "Screenshot_Labled" + counter.ToString() + ".png");
                     }
                     else
                     {
-                        ScreenCapture.CaptureScreenshot("ScreenShots/" + "Screenshot_Instance_Labled" + counter.ToString() + ".png");
+                        ScreenCapture.CaptureScreenshot("ScreenShots/inst/" + "Screenshot_Instance_Labled" + counter.ToString() + ".png");
                     }
+
                 }
+
             }
         }
     }
-
 
 }
