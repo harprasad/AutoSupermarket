@@ -7,7 +7,7 @@ public class AutoMegaFiller : MonoBehaviour {
     MegaScatterObject MsObj;
     
     //When we will have 1000 objects we will increase the following number from  to 1001
-    int MaxAvailableObjs = 21;  //actual +1
+    int MaxAvailableObjs = 37;  //actual +1
     string RadiusFilepath = "Assets/Resources/RadiusFile/RadiusInfos.txt";
     
     // Use this for initialization
