@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4375261614574750}
   - component: {fileID: 33857731610892426}
   - component: {fileID: 23581219676658670}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NGon01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4199628502068442}
   - component: {fileID: 33565881597134892}
   - component: {fileID: 23007260623729438}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NGon02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4659101674276956}
   - component: {fileID: 95239978701556332}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4125812405682640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 24
   m_TagString: Stuff
   m_Icon: {fileID: 0}

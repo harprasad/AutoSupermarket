@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4067038204003270}
   - component: {fileID: 33958008202031384}
   - component: {fileID: 23237474199485774}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: chips_180
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4544721942918010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 27
   m_TagString: Stuff
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4086657655885692}
   - component: {fileID: 95530813777837580}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 27
   m_TagString: Untagged
   m_Icon: {fileID: 0}

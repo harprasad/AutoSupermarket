@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4493957573234322}
   - component: {fileID: 95971260094837082}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4882163450327964}
   - component: {fileID: 33731555394711736}
   - component: {fileID: 23025144720213560}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4792344805530394}
   - component: {fileID: 33137467866220334}
   - component: {fileID: 23297450972019860}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "\u5BF9\u8C6102"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 4751965443369020}
   - component: {fileID: 33052554624034292}
   - component: {fileID: 23521361743800684}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4151632593218060}
   - component: {fileID: 33185310666347572}
   - component: {fileID: 23546984376922992}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 4991752143555256}
   - component: {fileID: 33723791143425070}
   - component: {fileID: 23959795835062510}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4238544152961342}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "\u7EC401"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 4510223030169348}
   - component: {fileID: 33600995587903430}
   - component: {fileID: 23153411238192492}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4118086621900046}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 19
   m_TagString: Stuff
   m_Icon: {fileID: 0}

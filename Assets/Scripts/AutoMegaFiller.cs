@@ -7,9 +7,10 @@ public class AutoMegaFiller : MonoBehaviour {
     MegaScatterObject MsObj;
     
     //When we will have 1000 objects we will increase the following number from  to 1001
-    int MaxAvailableObjs = 37;  //actual +1
+    int MaxAvailableObjs = 80;  //actual +1
     string RadiusFilepath = "Assets/Resources/RadiusFile/RadiusInfos.txt";
-    
+    List<int> ommiteednumbers = new List<int> { 36,37,38,39 };
+    float[] PossibleRotations = { 0, 90, 180, 270 };
     // Use this for initialization
     void Start () {
         ColorCodes.FillColorCodes();
@@ -26,14 +27,18 @@ public class AutoMegaFiller : MonoBehaviour {
     void AddMesh(int seed)
     {
         Random.InitState(System.DateTime.Now.Millisecond);
-        int MaxObjectTypesPerBin = 2;
+        int MaxObjectTypesPerBin = 4;
         for (int i = 0; i < MaxObjectTypesPerBin; i++)
         {
             MegaScatterLayer scatterLayer = new MegaScatterLayer();
-            if(i == 0) { scatterLayer.weight = 40; Debug.Log("Weight Set to 40"); }
+            if(i  < 2) { scatterLayer.weight = 10; }
             //Choose a random object
-            int randomobjindex = Random.Range(19, MaxAvailableObjs);
             //the prefabs path given below is with respect to the Resources foler not assets folder
+            int randomobjindex = Random.Range(1, MaxAvailableObjs);
+            if (ommiteednumbers.Contains(randomobjindex)) {
+                i--;
+                continue;
+            }
             string path = "Prefabs/" + randomobjindex.ToString();
             scatterLayer.obj = Resources.Load(path, typeof(GameObject)) as GameObject;
             float radius = GetRadius(randomobjindex.ToString());
@@ -48,18 +53,25 @@ public class AutoMegaFiller : MonoBehaviour {
                 scatterLayer.snap = new Vector3(radius * 2, 0, 0);
             }
             scatterLayer.seed = seed;
+            float randomangle = PossibleRotations[Random.Range(0, PossibleRotations.Length)];
+            scatterLayer.prerot = new Vector3(0, randomangle, 0);
             MsObj.layers.Add(scatterLayer);
         }
         MsObj.update = true;
     }
 
+ 
     float GetRadius(string prefabname)
     {
+        
         StreamReader textreader = new StreamReader(RadiusFilepath);
         string line;
         do
         {
             line = textreader.ReadLine();
+            if (line == null) {
+                return 0.1f;
+            }
             if (line.Equals(prefabname))
             {
                 float radius = float.Parse(textreader.ReadLine());
@@ -131,13 +143,19 @@ public class AutoMegaFiller : MonoBehaviour {
                         rend.material.mainTexture = null;
                         if (classSpecific)
                         {
-                            rend.material.shader = Shader.Find("Unlit/Color");
-                            rend.material.color = ColorCodes.Colordictionary[stuff.name];
+                            foreach (Material mat in rend.materials)
+                            {
+                                mat.shader = Shader.Find("Unlit/Color");
+                                mat.color = ColorCodes.Colordictionary[stuff.name];
+                            }
                         }
                         else
                         {
-                            rend.material.shader = Shader.Find("Unlit/Color");
-                            rend.material.color = new Color32(colorindex, colorindex, colorindex,255);
+                            foreach (Material mat in rend.materials)
+                            {
+                                mat.shader = Shader.Find("Unlit/Color");
+                                mat.color = new Color32(colorindex, colorindex, colorindex, 255);
+                            }
                         }
                     }
                     colorindex++;

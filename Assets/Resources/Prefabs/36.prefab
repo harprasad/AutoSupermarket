@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4390359409201316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 36
   m_TagString: Stuff
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4206544114522746}
   - component: {fileID: 95739364962085730}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 36
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 4185383920668394}
   - component: {fileID: 33765687257167370}
   - component: {fileID: 23789556404475352}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4872120368543582}
   - component: {fileID: 33584488237698520}
   - component: {fileID: 23228304008663428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ellipse02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 4948169824389478}
   - component: {fileID: 33603065292173196}
   - component: {fileID: 23330649200876250}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ellipse03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 4623920417651856}
   - component: {fileID: 33996190387240310}
   - component: {fileID: 23423600279793776}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ellipse01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
