@@ -4,32 +4,22 @@ using UnityEngine;
 
 public class AutoFiller : MonoBehaviour {
 
-    public Transform bin1ButtomLeft;
-    public Transform bin2ButtomLeft;
-    public Transform bin3ButtomLeft;
-    public Transform bin4ButtomLeft;
-    public Transform bin5ButtomLeft;
+    public Transform binStartingPoint;
+    
+
 
     public float maxstuffineachBin;
-
-    public float startZ;
     public float maxZ;
-    public float Zsteps;
-    public float Xsteps;
-    public GameObject LargeBox;
-    public GameObject SmallBox;
-    public GameObject Coke;
+    public float maxX;
+    List<int> ommiteednumbers = new List<int> { 36, 37, 38, 39 };
 
-    int[] Bin1Probability = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3 };  //1 for large box 2 for small box 3 for coke
-    int[] Bin2Probability = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3 };  //1 for large box 2 for small box 3 for coke
-
-    int[] Bin3Probability = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3 };  //same here
-    int[] Bin4Probability = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3 };  //same here
-
-    int[] Bin5Probability = { 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2 };  //same here
-
+    int MaxAvailableObjs = 80;  //actual +1
+    float xstep = 0;
+    float zstep = 0;
+    Vector3 nextpoint;
     // Use this for initialization
     void Start () {
+        nextpoint = binStartingPoint.transform.position;
         PlaceStuff();
 	}
 	
@@ -40,42 +30,72 @@ public class AutoFiller : MonoBehaviour {
 
     void PlaceStuff()
     {
-        Fillbins(Bin1Probability,bin1ButtomLeft.position.x,bin1ButtomLeft.position.y);
-        Fillbins(Bin2Probability,bin2ButtomLeft.position.x,bin2ButtomLeft.position.y);
-        Fillbins(Bin3Probability,bin3ButtomLeft.position.x,bin3ButtomLeft.position.y);
-        Fillbins(Bin4Probability,bin4ButtomLeft.position.x,bin4ButtomLeft.position.y);
-        Fillbins(Bin5Probability,bin5ButtomLeft.position.x,bin5ButtomLeft.position.y);
-    }
-
-    void Fillbins(int[] ProbabilityArray,float startx,float starty)
-    {
-        float nextZ = startZ, nextY = starty, nextX = startx;
-        float centerx = startx + 0.2f;
-        for (int i = 0; i < maxstuffineachBin; i++)
+        for ( int row =0; row < 100 ;row++ )
         {
-            if (nextZ > maxZ) return;//if too deep then return bin filled
-            int stuffindex = ProbabilityArray[Random.Range(0, ProbabilityArray.Length)];
-            if (stuffindex == 1)
+        int objindex = SelectObjectIndex();
+            for (int column = 0; column < 3; column++)
             {
-                nextZ += Zsteps;
-                Instantiate(LargeBox, new Vector3(centerx, starty, nextZ), Quaternion.identity);
-            }
-            else if (stuffindex == 2)
-            {
-                nextZ += Zsteps;
-                Instantiate(SmallBox, new Vector3(centerx, starty, nextZ), Quaternion.identity);
-            }
-            else if (stuffindex == 3 && nextX == startx) {
-                nextZ += Zsteps;
-                for (int count = 0; count < 4; count++)
+                SpawnSelectedObject(objindex);
+                nextpoint.z += zstep;
+                if ((nextpoint.z + zstep) > maxZ)
                 {
-                    Instantiate(Coke, new Vector3(nextX, starty, nextZ), Quaternion.identity);
-                    nextX += Xsteps;
+                    break;
                 }
-                nextX = startx;
+            }
+            nextpoint.x += xstep;
+            nextpoint.z = binStartingPoint.position.z;
+            if (nextpoint.x > maxX) {
+                break;
             }
         }
     }
+
+    int SelectObjectIndex()
+    {
+        int randomobjindex = 1;
+        do
+        {
+            randomobjindex = Random.Range(1, MaxAvailableObjs);
+        } while (ommiteednumbers.Contains(randomobjindex));
+        return randomobjindex;
+    }
+
+    void SpawnSelectedObject(int ObjectIndex)
+    {
+        string path = "Prefabs/" + ObjectIndex.ToString();
+        GameObject ObjectInstance = Instantiate(Resources.Load(path, typeof(GameObject))) as GameObject;
+        ObjectInstance.transform.position = new Vector3(0, 0, 0);
+        Bounds bounds = GetBounds(ObjectInstance);
+        float xpose = nextpoint.x + bounds.extents.x;
+        float zpose = nextpoint.z + bounds.extents.z;
+        float ypose = nextpoint.y;
+
+        ObjectInstance.transform.position = new Vector3(xpose, ypose, zpose);
+        xstep = bounds.size.x;
+        zstep = bounds.size.z;
+        
+    }
+
+    Bounds GetBounds(GameObject obj)
+    {
+        Bounds bounds = new Bounds(new Vector3(0, 0, 0), new Vector3(0, 0, 0));
+        Renderer[] rends = obj.GetComponentsInChildren<Renderer>();
+        foreach (Renderer rend in rends)
+        {
+            if (rend.bounds.size.magnitude > bounds.size.magnitude)
+            {
+                bounds = rend.bounds;
+            }
+        }
+        return bounds;
+    }
+   
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.color = Color.blue;
+    //    Gizmos.DrawCube(new Vector3(0, -1.6f, 2.8f), bounds.size);
+    //}
+
 
     public void OnRefresh()
     {
