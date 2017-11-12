@@ -17,10 +17,14 @@ public class AutoFiller : MonoBehaviour {
     float xstep = 0;
     float zstep = 0;
     Vector3 nextpoint;
+    public int NoOfColumns;
+    public float ColumnSpacing;
+    public float RowSpacing;
     // Use this for initialization
     void Start () {
+        ColorCodes.FillColorCodes();
         nextpoint = binStartingPoint.transform.position;
-        PlaceStuff();
+        StartCoroutine(KeepRefresh());
 	}
 	
 	// Update is called once per frame
@@ -30,21 +34,29 @@ public class AutoFiller : MonoBehaviour {
 
     void PlaceStuff()
     {
-        for ( int row =0; row < 100 ;row++ )
+        for (int xcolumns = 0; xcolumns < 100; xcolumns++)
         {
-        int objindex = SelectObjectIndex();
-            for (int column = 0; column < 3; column++)
+            int objindex = SelectObjectIndex();
+            for (int columns = 0; columns < NoOfColumns; columns++)
             {
-                SpawnSelectedObject(objindex);
-                nextpoint.z += zstep;
-                if ((nextpoint.z + zstep) > maxZ)
+                for (int rows = 0; rows < 3; rows++)
+                {
+                    SpawnSelectedObject(objindex);
+                    nextpoint.z += zstep + ColumnSpacing;
+                    if ((nextpoint.z + zstep) > maxZ)
+                    {
+                        break;
+                    }
+                }
+                nextpoint.x += xstep + RowSpacing;
+                nextpoint.z = binStartingPoint.position.z;
+                if (nextpoint.x > maxX)
                 {
                     break;
                 }
             }
-            nextpoint.x += xstep;
-            nextpoint.z = binStartingPoint.position.z;
-            if (nextpoint.x > maxX) {
+            if (nextpoint.x > maxX)
+            {
                 break;
             }
         }
@@ -64,6 +76,7 @@ public class AutoFiller : MonoBehaviour {
     {
         string path = "Prefabs/" + ObjectIndex.ToString();
         GameObject ObjectInstance = Instantiate(Resources.Load(path, typeof(GameObject))) as GameObject;
+        ObjectInstance.name = ObjectIndex.ToString();
         ObjectInstance.transform.position = new Vector3(0, 0, 0);
         Bounds bounds = GetBounds(ObjectInstance);
         float xpose = nextpoint.x + bounds.extents.x;
@@ -97,10 +110,28 @@ public class AutoFiller : MonoBehaviour {
     //}
 
 
-    public void OnRefresh()
+    IEnumerator KeepRefresh()
     {
-        DestroyAll();
-        PlaceStuff();
+        int counter = 0;
+        while(true){
+            yield return new WaitForSeconds(1f);
+            DestroyAll();
+            PlaceStuff();
+            yield return new WaitForSeconds(0.1f);
+            GameObject[] Stuffs = GameObject.FindGameObjectsWithTag("Stuff");
+            CustomUtils.TakeScreenShots(counter, Stuffs, false,false);
+            yield return new WaitForSeconds(0.1f);
+            CustomUtils.SetCullingMask(true);
+            yield return new WaitForSeconds(0.1f);
+            CustomUtils.TakeScreenShots(counter, Stuffs, true,true);
+            yield return new WaitForSeconds(0.1f);
+            CustomUtils.TakeScreenShots(counter, Stuffs, true,false);
+            yield return new WaitForSeconds(0.1f);
+            CustomUtils.SetCullingMask(false);
+            counter++;
+
+        }
+        
     }
 
     void DestroyAll()

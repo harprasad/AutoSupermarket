@@ -21,7 +21,7 @@ public class ColorCodes : MonoBehaviour {
                 if (randomcolor.r == 0 && randomcolor.g == 0 && randomcolor.b == 0) {
                     randomcolor.b = 100;//make it blue
                 }
-                Colordictionary.Add(i.ToString() + " Scatter", randomcolor);
+                Colordictionary.Add(i.ToString(), randomcolor);
             }
         }
     }
