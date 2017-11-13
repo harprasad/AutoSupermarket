@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AutoFiller : MonoBehaviour {
 
-    public Transform binStartingPoint;
+    public Transform bin1StartingPoint;
+    public Transform bin2StartingPoint;
     
 
 
@@ -16,14 +17,16 @@ public class AutoFiller : MonoBehaviour {
     int MaxAvailableObjs = 80;  //actual +1
     float xstep = 0;
     float zstep = 0;
-    Vector3 nextpoint;
+    Vector3 bin1nextpoint;
+    Vector3 bin2nextpoint;
     public int NoOfColumns;
     public float ColumnSpacing;
     public float RowSpacing;
     // Use this for initialization
     void Start () {
         ColorCodes.FillColorCodes();
-        nextpoint = binStartingPoint.transform.position;
+        bin1nextpoint = bin1StartingPoint.transform.position;
+        bin2nextpoint = bin2StartingPoint.transform.position;
         StartCoroutine(KeepRefresh());
 	}
 	
@@ -32,7 +35,7 @@ public class AutoFiller : MonoBehaviour {
 		
 	}
 
-    void PlaceStuff()
+    void PlaceStuff(Vector3 nextpoint,Transform startingpoint)
     {
         for (int xcolumns = 0; xcolumns < 100; xcolumns++)
         {
@@ -41,7 +44,7 @@ public class AutoFiller : MonoBehaviour {
             {
                 for (int rows = 0; rows < 3; rows++)
                 {
-                    SpawnSelectedObject(objindex);
+                    SpawnSelectedObject(objindex,nextpoint);
                     nextpoint.z += zstep + ColumnSpacing;
                     if ((nextpoint.z + zstep) > maxZ)
                     {
@@ -49,7 +52,7 @@ public class AutoFiller : MonoBehaviour {
                     }
                 }
                 nextpoint.x += xstep + RowSpacing;
-                nextpoint.z = binStartingPoint.position.z;
+                nextpoint.z = startingpoint.position.z;
                 if (nextpoint.x > maxX)
                 {
                     break;
@@ -72,7 +75,7 @@ public class AutoFiller : MonoBehaviour {
         return randomobjindex;
     }
 
-    void SpawnSelectedObject(int ObjectIndex)
+    void SpawnSelectedObject(int ObjectIndex,Vector3 nextpoint)
     {
         string path = "Prefabs/" + ObjectIndex.ToString();
         GameObject ObjectInstance = Instantiate(Resources.Load(path, typeof(GameObject))) as GameObject;
@@ -116,7 +119,8 @@ public class AutoFiller : MonoBehaviour {
         while(true){
             yield return new WaitForSeconds(1f);
             DestroyAll();
-            PlaceStuff();
+            PlaceStuff(bin1nextpoint,bin1StartingPoint);
+            PlaceStuff(bin2nextpoint,bin2StartingPoint);
             yield return new WaitForSeconds(0.1f);
             GameObject[] Stuffs = GameObject.FindGameObjectsWithTag("Stuff");
             CustomUtils.TakeScreenShots(counter, Stuffs, false,false);
